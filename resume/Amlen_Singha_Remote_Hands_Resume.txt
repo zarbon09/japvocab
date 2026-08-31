@@ -1,0 +1,70 @@
+AMLEN SINGHA
+Remote Hands / Smart Hands Technician | Data Center Customer Operations
+India | +91-9911989661 | amlensingha@gmail.com | linkedin.com/in/amlensingha
+Availability: Immediate / 15 days | On-site | Rotational 24x7 shifts | Physical DC floor work
+
+PROFESSIONAL SUMMARY
+Operations professional targeting Remote Hands / Smart Hands and Data Center Customer Operations roles. 8+ years executing ticket-style work against SOPs, with documented accuracy (98%+ QA), vendor coordination, incident follow-through, and time-bound reporting. Comfortable following customer runbooks, logging work in tickets, and closing requests to SLA. Linux fundamentals in progress (PGDCA); Japanese bilingual (JLPT N3 certified, N2 trained) for Japan-account colo customers. Open to junior / trainee technician title to build hands-on rack, cabling, and break-fix skills on site.
+
+CORE SKILLS (REMOTE HANDS / COLO OPERATIONS)
+- Customer operations: Ticket-driven requests, SOP / runbook execution, SLA follow-up, quality checks, escort-style vendor coordination, shift-ready documentation
+- Incident and logs: Status-log investigation, multi-team remediation, weekly ops reporting, bottleneck tracking
+- Asset and vendor tracking: Access permissions, renewals, inventory-style records, payment / contract tracking
+- Tools: Microsoft Excel (advanced reporting), Linux basics, Python (data/reporting), documentation control, CAPM (structured project tracking)
+- Languages: English (professional), Japanese (professional / JLPT N3 certified, N2 trained), Hindi (native)
+
+PROFESSIONAL EXPERIENCE
+
+Amazon — Quality Analyst (Japanese) | Oct 2024 – Nov 2024
+Customer and operations quality role: ticket-style checks, log investigation, vendor/internal coordination.
+- Executed time-bound quality requests on Japanese-language content; verified phrasing and substance before release (SOP accuracy).
+- Investigated shipment status logs for non-delivery issues; coordinated multi-department remediation and successful re-ships (incident follow-through).
+- Produced weekly operational reports for senior leadership, highlighting process bottlenecks and improvement actions.
+- Worked with global internal teams and external vendors to implement lasting operational fixes.
+
+Wipro — Senior Media Analyst | Feb 2018 – Oct 2024
+High-volume operations and quality role for Japanese corporate clients; documentation, vendors, and SLA-style accuracy.
+- Completed 100+ Japanese-language quality checks monthly at 98%+ accuracy (same close-out discipline used on smart-hands tickets).
+- Tracked 100+ global vendor subscriptions: access permissions, renewal deadlines, and payment records (asset / vendor control).
+- Maintained project documentation, online access control, and deadline tracking (change and document control).
+- Converted multimedia customer feedback into actionable executive summaries for Japanese stakeholders.
+- Drove continuous-improvement work using IT tools to raise daily throughput; recognized Best Analyst (month/quarter) and Best Team (Q1 2023).
+
+Caliber Interconnect Solutions — Japanese Translator / Technical Liaison | Jan 2017 – Jul 2017
+On-instruction technical work between Japanese clients and Indian engineering teams (PCB).
+- Captured customer technical requirements and turned them into clear written specs for engineers (runbook / instruction following).
+- Provided consecutive interpretation on live calls and maintained Q&A logs so actions were not lost between offices.
+- Closed communication gaps that delayed delivery: aligned scope, flagged risk, and kept both sides on the same task list.
+
+IICT Institute — Administrator | Jun 2008 – Dec 2011
+- Ran day-to-day operations: enrollment workflows, records quality control, scheduling, and stakeholder coordination.
+
+CAREER BREAK AND CURRENT AVAILABILITY
+
+Japanese language study — Shintomi International Language Institute, Chiba, Japan | Jan 2025 – Mar 2026
+- Full-time Japanese study in Japan. Now fully available for on-site DC shifts in India.
+
+Visual Japanese — Independent learning-content project (part-time, not a full-time employer) | Apr 2026 – Present
+- Side project (YouTube / study materials). On-site technician roles are the priority; this is not a competing full-time commitment.
+
+EDUCATION
+- Post Graduate Diploma in Computer Applications (PGDCA) — IGNOU (pursuing) — building IT and systems fundamentals for data center floor work.
+- Bachelor of Arts (B.A.) — Indira Gandhi National Open University (IGNOU), 2008
+- Japanese language: Shintomi (Japan) 2025–2026; MIKADO 2015–2016; MOSAI 2013–2014
+
+CERTIFICATIONS
+- CAPM — Certified Associate in Project Management (PMI)
+- JLPT N3 certified; JLPT N2 trained
+- IBM: Python for Data Science, AI & Development; Introduction to Data Analytics
+- Google AI Professional Certificate
+
+HONORS
+Wipro: Best Analyst of the Month (May 2024, Oct 2023) | Best Analyst of the Quarter (Q2 2023) | Best Team Award (Q1 2023)
+
+WHAT I AM READY TO DO ON DAY ONE
+On-site remote hands / smart hands tickets: follow customer instructions, photograph/confirm work, update the ticket, meet the SLA, and escalate when the runbook stops. Physical work, nights, and weekends accepted. Hands-on racking, copper/fiber, and break-fix to be built on the job (trainee / junior technician). Japanese available for Japan-account customers.
+
+---
+COVER NOTE (paste into the application form; do not attach as a second resume)
+
+I am applying for Remote Hands / Smart Hands / Data Center Customer Operations (on-site, rotational shifts). I am not applying as a facilities or Linux engineer. I have 8 years of SOP-based quality and operations work, 98%+ QA accuracy, vendor and ticket-style follow-through, and Japanese (JLPT N3). I am available immediately for junior / trainee technician work on the DC floor.
