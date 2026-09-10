@@ -63,10 +63,15 @@ function LearnList({
       <div className="top-label">JLPT N5</div>
       <h1>Learn</h1>
       <p className="muted">
-        {visible.length} cards in this filter. Full N5 list uses the same flashcard layout as starter cards
-        (reading, scene, memory tip, example sentences). Starter cards still have the hand-made drawings.
-        PDF cards are pictures from your book.
+        {visible.length} cards. If you still see plain text rows with no color pictures, stop the
+        server (Ctrl+C), run git pull, then npm install, then npm run dev.
       </p>
+      {category === "Full N5 list" ? (
+        <p className="banner">
+          Full N5 list is now flashcards like 雨. Color picture, memory tip, and example sentences.
+          Tap any word.
+        </p>
+      ) : null}
       <div className="chips">
         {chips.map((name) => (
           <button
@@ -89,12 +94,7 @@ function LearnList({
           {word.sceneImage ? (
             <img alt="" className="thumb" src={word.sceneImage} />
           ) : (
-            <div
-              className="thumb letter"
-              style={{ background: word.sceneTint }}
-            >
-              {word.kanji.slice(0, 2)}
-            </div>
+            <PosterArt compact word={word} />
           )}
           <div className="kanji-box">{word.kanji}</div>
           <div>
@@ -118,23 +118,35 @@ function LearnList({
   );
 }
 
+function PosterArt({
+  word,
+  compact,
+}: {
+  word: VocabWord;
+  compact?: boolean;
+}) {
+  return (
+    <div
+      className={compact ? "thumb poster-thumb" : "scene-art poster"}
+      style={{
+        background: `linear-gradient(165deg, ${word.sceneTint} 0%, ${word.sceneTint}bb 55%, #f6f1e4 100%)`,
+      }}
+    >
+      <span className="poster-blob a" />
+      <span className="poster-blob b" />
+      {compact ? null : <span className="poster-kana">{word.hiragana}</span>}
+      <span className="poster-kanji">{compact ? word.kanji.slice(0, 2) : word.kanji}</span>
+    </div>
+  );
+}
+
 function SceneBlock({ word }: { word: VocabWord }) {
   return (
     <div className="scene">
       {word.sceneImage ? (
         <img alt={word.meaning} className="scene-art" src={word.sceneImage} />
       ) : (
-        <div
-          className="scene-art poster"
-          style={{
-            background: `linear-gradient(165deg, ${word.sceneTint} 0%, ${word.sceneTint}bb 55%, #f6f1e4 100%)`,
-          }}
-        >
-          <span className="poster-blob a" />
-          <span className="poster-blob b" />
-          <span className="poster-kana">{word.hiragana}</span>
-          <span className="poster-kanji">{word.kanji}</span>
-        </div>
+        <PosterArt word={word} />
       )}
       <div className="bubble">
         {highlightText(word.sceneCaption, word.sceneHighlightWords)}
@@ -182,7 +194,7 @@ function WordCard({
         ← Back
       </button>
       <div className="hero" style={{ background: `${word.sceneTint}38` }}>
-        <span className="ribbon">JLPT N5</span>
+        <span className="ribbon">{word.deck === "n5" ? "FLASHCARD" : "JLPT N5"}</span>
         <div className="top-label" style={{ marginTop: 8 }}>
           {word.hiragana}
         </div>

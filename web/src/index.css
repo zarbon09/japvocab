@@ -41,6 +41,15 @@ h1 {
 
 .muted { color: #666; }
 
+.banner {
+  background: var(--green-soft);
+  color: var(--green-dark);
+  font-weight: 700;
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin: 0 0 12px;
+}
+
 .tabs {
   position: fixed;
   left: 0;
@@ -244,14 +253,31 @@ h1 {
   flex-shrink: 0;
 }
 
-.thumb.letter {
+.thumb.poster-thumb {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1;
+}
+
+.thumb.poster-thumb .poster-kanji {
+  font-size: 22px;
+  text-shadow: none;
+}
+
+.thumb.poster-thumb .poster-blob.a {
+  width: 40px;
+  height: 40px;
+  top: -8px;
+  left: -8px;
+}
+
+.thumb.poster-thumb .poster-blob.b {
+  width: 28px;
+  height: 28px;
+  right: 2px;
+  bottom: 2px;
 }
 
 .bubble {
