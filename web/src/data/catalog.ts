@@ -1,6 +1,7 @@
 import pdfCards from "./pdfCards.json";
 import openJlpt from "./openjlpt-n5.json";
-import { toRomaji } from "wanakana";
+import { toHiragana, toRomaji } from "wanakana";
+import { buildN5Style } from "./n5Style";
 import { words as starterWords, type ExampleSentence, type RubyToken, type VocabWord } from "./words";
 
 export type { VocabWord };
@@ -21,17 +22,6 @@ type OpenJlptEntry = {
   meanings: string[];
   examples?: { ja: string; en: string }[];
 };
-
-const TINTS = [
-  "#7ba7c9",
-  "#c45c26",
-  "#2f6b4f",
-  "#6b3fa0",
-  "#b42318",
-  "#875400",
-  "#0f4c81",
-  "#c47a2c",
-];
 
 const starterKeys = new Set(starterWords.map((w) => w.kanji));
 
@@ -138,26 +128,21 @@ function categoryFor(word: string, meaning: string): string {
   return "Daily life";
 }
 
-function highlightWords(meaning: string): string[] {
-  const first = meaning.split(/[,/]/)[0]?.trim() ?? meaning;
-  return first
-    .split(/\s+/)
-    .map((w) => w.replace(/[^a-zA-Z'-]/g, ""))
-    .filter((w) => w.length > 2)
-    .slice(0, 3);
-}
-
-function fromOpenJlpt(entry: OpenJlptEntry, index: number): VocabWord {
+function fromOpenJlpt(entry: OpenJlptEntry): VocabWord {
   const meanings = (entry.meanings ?? []).map((m) => String(m).trim()).filter(Boolean);
   const meaning = meanings[0] ?? "N5 vocabulary";
   const extra = meanings.slice(1, 3).join("; ");
   const word = String(entry.word ?? "").trim();
-  const hiragana = (entry.reading || word).trim();
+  const hiragana = (toHiragana(entry.reading || word) || word).trim();
   const romaji = toRomaji(hiragana);
   const roma = romaji.trim() || hiragana;
-  const tint = TINTS[index % TINTS.length] ?? "#7ba7c9";
-  const hits = highlightWords(meaning);
-  const extraBit = extra ? ` Also: ${extra}.` : "";
+  const style = buildN5Style({
+    kanji: word,
+    hiragana,
+    romaji: roma,
+    meaning,
+    extra,
+  });
   return {
     id: `n5-${word}-${entry.reading || "kana"}`,
     kanji: word,
@@ -165,15 +150,13 @@ function fromOpenJlpt(entry: OpenJlptEntry, index: number): VocabWord {
     romaji: roma,
     meaning: meaning.toUpperCase(),
     category: categoryFor(word, meaning),
-    sceneCaption: `Look! This scene is about ${meaning}. Remember ${word} — it means ${meaning}.${extraBit}`,
-    sceneHighlightWords: hits,
-    mnemonicHook: `${roma.toUpperCase()} = ${meaning}`,
-    mnemonicBody: extra
-      ? `Say ${roma} when you see ${word}. It means “${meaning}” (also ${extra}). Picture that meaning.`
-      : `Say ${roma} when you see ${word}. It means “${meaning}”. Picture that meaning in your head.`,
-    sceneTint: tint,
+    sceneCaption: style.caption,
+    sceneHighlightWords: style.highlights,
+    mnemonicHook: style.hook,
+    mnemonicBody: style.body,
+    sceneTint: style.tint,
     examples: examplesFor(entry, word, hiragana, meaning),
-    sceneImage: "",
+    sceneImage: style.image,
     deck: "n5",
   };
 }
@@ -204,7 +187,7 @@ const fromOpenJlptList: VocabWord[] = (openJlpt as OpenJlptEntry[])
     const word = String(entry.word ?? "").trim();
     return word.length > 0 && !starterKeys.has(word);
   })
-  .map((entry, index) => fromOpenJlpt(entry, index));
+  .map((entry) => fromOpenJlpt(entry));
 
 export const words: VocabWord[] = [...starters, ...fromOpenJlptList, ...fromPdf];
 

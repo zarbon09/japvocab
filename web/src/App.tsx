@@ -68,8 +68,8 @@ function LearnList({
       </p>
       {category === "Full N5 list" ? (
         <p className="banner">
-          Full N5 list is now flashcards like 雨. Color picture, memory tip, and example sentences.
-          Tap any word.
+          Each Full N5 word has its own cartoon and a sound-alike memory pun (same idea as AME = umbrella).
+          Tap a word.
         </p>
       ) : null}
       <div className="chips">

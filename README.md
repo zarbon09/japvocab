@@ -36,7 +36,7 @@ That is the whole setup. If you still have Android Studio open from the earlier 
 ## Word lists
 
 - **Starter cards** — a small illustrated set (雨, 青, …) with memory tips.
-- **Full N5 list** — the same flashcard layout as starter cards (big word, romaji, scene, memory tip, example sentences with the word marked). Scenes are generated posters, not unique cartoons. Vocabulary from [OpenJLPT](https://github.com/evanclan/OpenJLPT) (CC BY 4.0).
+- **Full N5 list** — each word has its own cartoon scene and a custom sound-alike pun (same flashcard idea as 雨). Starter cards still use the painted pictures. Vocabulary from [OpenJLPT](https://github.com/evanclan/OpenJLPT) (CC BY 4.0).
 - **From your PDF** — picture cards extracted from your book. Study them as images.
 
 Practice quizzes use starter + full N5 typed cards only. PDF cards stay in Learn because they are pictures, not quiz text.
