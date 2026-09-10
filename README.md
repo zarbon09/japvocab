@@ -1,31 +1,40 @@
-# JLPT N5 Vocab
+# JLPT N5 Vocab (website)
 
-Android app for learning beginner Japanese vocabulary (JLPT N5).
+A simple **website** for learning beginner Japanese vocabulary (JLPT N5). Use this in a browser. You do **not** need Android Studio.
 
 Three tabs:
 
-- **Learn** — flashcards in the style of a study poster (kanji, readings, memory tip, example sentences)
+- **Learn** — flashcards (kanji, readings, memory tip, example sentences)
 - **Practice** — meaning / reading / mixed quizzes
 - **Progress** — words opened, known words, quiz scores
 
-## Newbie start here
+Progress is saved in your browser (`localStorage`). No login.
 
-1. [docs/APP_OUTLINE.md](docs/APP_OUTLINE.md) — what the app is, how it is structured, how to add a word  
-2. [PROGRESS.md](PROGRESS.md) — checklist of done vs next steps  
-3. Open this folder in Android Studio and press Run
+## How to run (newbie)
 
-## Requirements
+1. Install [Node.js](https://nodejs.org/) (LTS). This also installs `npm`.
+2. Open a terminal in this project folder.
+3. Run:
 
-- Android Studio
-- JDK 17
-- Android device or emulator, API 26+
-
-## Project layout
-
+```bash
+cd web
+npm install
+npm run dev
 ```
-app/src/main/java/com/japvocab/n5/
-  MainActivity.kt          # starts the UI
-  data/                    # words + saved progress
-  ui/screens/              # Learn, Practice, Progress, quiz, card
-  ui/theme/                # N5 green palette
-```
+
+4. Open the URL it prints, usually [http://localhost:5173](http://localhost:5173).
+
+That is the whole setup. If you still have Android Studio open from the earlier plan, you can close it.
+
+## What to try first
+
+1. Learn → **雨** (rain)
+2. Mark a word as known
+3. Practice → mixed quiz
+4. Check Progress
+
+## Optional
+
+The old Android project files are still in this repo, but the current plan is the website. Ignore the `app/` Android folder unless you come back to mobile later.
+
+More detail: [docs/APP_OUTLINE.md](docs/APP_OUTLINE.md) · checklist: [PROGRESS.md](PROGRESS.md)

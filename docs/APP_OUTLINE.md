@@ -1,10 +1,12 @@
 # JLPT N5 Vocab — app outline for a newbie
 
-This is the map of the Android app. Read this first. Then use [PROGRESS.md](../PROGRESS.md) as a checklist of what is already built and what you do next.
+The current version is a **website** in `web/`. Run it with `cd web && npm install && npm run dev`. You do not need Android Studio.
+
+Then use [PROGRESS.md](../PROGRESS.md) as a checklist. An older Android project still exists in `app/`; you can ignore it.
 
 ## What you are building
 
-A simple Japanese vocabulary app for **JLPT N5** (the first official Japanese test level).
+A simple Japanese vocabulary **website** for **JLPT N5** (the first official Japanese test level).
 
 The look is based on the rain (雨) study card:
 
