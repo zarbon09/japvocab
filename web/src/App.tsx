@@ -78,6 +78,7 @@ function LearnList({
           onClick={() => onOpen(word.id)}
           type="button"
         >
+          <img alt="" className="thumb" src={word.sceneImage} />
           <div className="kanji-box">{word.kanji}</div>
           <div>
             <div className="top-label">{word.hiragana}</div>
@@ -125,7 +126,8 @@ function WordCard({
         <div className="pill">{word.romaji}</div>
         <h2>{word.meaning}</h2>
       </div>
-      <div className="scene" style={{ background: word.sceneTint }}>
+      <div className="scene">
+        <img alt={word.meaning} className="scene-art" src={word.sceneImage} />
         <div className="bubble">
           {highlightText(word.sceneCaption, word.sceneHighlightWords)}
         </div>

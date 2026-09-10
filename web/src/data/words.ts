@@ -23,11 +23,13 @@ export type VocabWord = {
   mnemonicBody: string;
   sceneTint: string;
   examples: ExampleSentence[];
+  sceneImage: string;
 };
 
 export const words: VocabWord[] = [
   {
     "id": "ame",
+    "sceneImage": "/scenes/ame.png",
     "kanji": "雨",
     "hiragana": "あめ",
     "romaji": "ame / u",
@@ -159,6 +161,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "hito",
+    "sceneImage": "/scenes/hito.png",
     "kanji": "人",
     "hiragana": "ひと",
     "romaji": "hito / jin",
@@ -260,6 +263,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "hi",
+    "sceneImage": "/scenes/hi.png",
     "kanji": "日",
     "hiragana": "ひ",
     "romaji": "hi / nichi",
@@ -361,6 +365,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "mizu",
+    "sceneImage": "/scenes/mizu.png",
     "kanji": "水",
     "hiragana": "みず",
     "romaji": "mizu / sui",
@@ -457,6 +462,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "hi-fire",
+    "sceneImage": "/scenes/hi-fire.png",
     "kanji": "火",
     "hiragana": "ひ",
     "romaji": "hi / ka",
@@ -547,6 +553,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "yama",
+    "sceneImage": "/scenes/yama.png",
     "kanji": "山",
     "hiragana": "やま",
     "romaji": "yama / san",
@@ -642,6 +649,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "ki",
+    "sceneImage": "/scenes/ki.png",
     "kanji": "木",
     "hiragana": "き",
     "romaji": "ki / moku",
@@ -752,6 +760,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "hon",
+    "sceneImage": "/scenes/hon.png",
     "kanji": "本",
     "hiragana": "ほん",
     "romaji": "hon",
@@ -857,6 +866,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "taberu",
+    "sceneImage": "/scenes/taberu.png",
     "kanji": "食",
     "hiragana": "たべる",
     "romaji": "tabe / shoku",
@@ -947,6 +957,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "miru",
+    "sceneImage": "/scenes/miru.png",
     "kanji": "見",
     "hiragana": "みる",
     "romaji": "mi / ken",
@@ -1037,6 +1048,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "iku",
+    "sceneImage": "/scenes/iku.png",
     "kanji": "行",
     "hiragana": "いく",
     "romaji": "i / kou",
@@ -1127,6 +1139,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "ookii",
+    "sceneImage": "/scenes/ookii.png",
     "kanji": "大",
     "hiragana": "おおきい",
     "romaji": "oo / dai",
@@ -1227,6 +1240,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "chiisai",
+    "sceneImage": "/scenes/chiisai.png",
     "kanji": "小",
     "hiragana": "ちいさい",
     "romaji": "chii / shou",
@@ -1317,6 +1331,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "manabu",
+    "sceneImage": "/scenes/manabu.png",
     "kanji": "学",
     "hiragana": "まなぶ",
     "romaji": "mana / gaku",
@@ -1403,6 +1418,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "toki",
+    "sceneImage": "/scenes/toki.png",
     "kanji": "時",
     "hiragana": "とき",
     "romaji": "toki / ji",
@@ -1488,6 +1504,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "ima",
+    "sceneImage": "/scenes/ima.png",
     "kanji": "今",
     "hiragana": "いま",
     "romaji": "ima / kon",
@@ -1583,6 +1600,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "tomo",
+    "sceneImage": "/scenes/tomo.png",
     "kanji": "友",
     "hiragana": "とも",
     "romaji": "tomo / yuu",
@@ -1678,6 +1696,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "kuruma",
+    "sceneImage": "/scenes/kuruma.png",
     "kanji": "車",
     "hiragana": "くるま",
     "romaji": "kuruma / sha",
@@ -1768,6 +1787,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "atarashii",
+    "sceneImage": "/scenes/atarashii.png",
     "kanji": "新",
     "hiragana": "あたらしい",
     "romaji": "atara / shin",
@@ -1848,6 +1868,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "kau",
+    "sceneImage": "/scenes/kau.png",
     "kanji": "買",
     "hiragana": "かう",
     "romaji": "ka / bai",
@@ -1943,6 +1964,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "nomu",
+    "sceneImage": "/scenes/nomu.png",
     "kanji": "飲",
     "hiragana": "のむ",
     "romaji": "no / in",
@@ -2043,6 +2065,7 @@ export const words: VocabWord[] = [
   },
   {
     "id": "yasui",
+    "sceneImage": "/scenes/yasui.png",
     "kanji": "安",
     "hiragana": "やすい",
     "romaji": "yasu / an",
@@ -2129,6 +2152,53 @@ export const words: VocabWord[] = [
         ],
         "english": "It is a safe place.",
         "englishHighlight": "safe"
+      }
+    ]
+  },
+
+  {
+    "id": "ao",
+    "sceneImage": "/scenes/ao.png",
+    "kanji": "青",
+    "hiragana": "あお",
+    "romaji": "ao / sei",
+    "meaning": "BLUE / GREEN",
+    "category": "Adjectives",
+    "sceneCaption": "The AO ocean and SEI sky are so blue! (and green!)",
+    "sceneHighlightWords": ["blue", "green", "AO", "SEI"],
+    "mnemonicHook": "AO = A-Okay",
+    "mnemonicBody": "Remember: AO = A-Okay Blue Sky. When the ocean and sky look okay, they look blue!",
+    "sceneTint": "#4aa3d9",
+    "examples": [
+      {
+        "tokens": [
+          { "text": "青い", "reading": "あおい", "highlight": true },
+          { "text": "空", "reading": "そら", "highlight": false },
+          { "text": "がきれいです。", "reading": null, "highlight": false }
+        ],
+        "english": "The blue sky is beautiful.",
+        "englishHighlight": "blue sky"
+      },
+      {
+        "tokens": [
+          { "text": "信号", "reading": "しんごう", "highlight": false },
+          { "text": "が", "reading": null, "highlight": false },
+          { "text": "青", "reading": "あお", "highlight": true },
+          { "text": "になりました。", "reading": null, "highlight": false }
+        ],
+        "english": "The traffic light turned green.",
+        "englishHighlight": "green"
+      },
+      {
+        "tokens": [
+          { "text": "青い", "reading": "あおい", "highlight": true },
+          { "text": "鳥", "reading": "とり", "highlight": false },
+          { "text": "を", "reading": null, "highlight": false },
+          { "text": "見ました", "reading": "みました", "highlight": false },
+          { "text": "。", "reading": null, "highlight": false }
+        ],
+        "english": "I saw a blue bird.",
+        "englishHighlight": "blue"
       }
     ]
   }
