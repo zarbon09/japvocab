@@ -63,8 +63,9 @@ function LearnList({
       <div className="top-label">JLPT N5</div>
       <h1>Learn</h1>
       <p className="muted">
-        {visible.length} cards in this filter. Full N5 list is typed vocabulary.
-        Starter cards have memory tips and drawings. PDF cards are pictures from your book.
+        {visible.length} cards in this filter. Full N5 list uses the same flashcard layout as starter cards
+        (reading, scene, memory tip, example sentences). Starter cards still have the hand-made drawings.
+        PDF cards are pictures from your book.
       </p>
       <div className="chips">
         {chips.map((name) => (
@@ -117,6 +118,31 @@ function LearnList({
   );
 }
 
+function SceneBlock({ word }: { word: VocabWord }) {
+  return (
+    <div className="scene">
+      {word.sceneImage ? (
+        <img alt={word.meaning} className="scene-art" src={word.sceneImage} />
+      ) : (
+        <div
+          className="scene-art poster"
+          style={{
+            background: `linear-gradient(165deg, ${word.sceneTint} 0%, ${word.sceneTint}bb 55%, #f6f1e4 100%)`,
+          }}
+        >
+          <span className="poster-blob a" />
+          <span className="poster-blob b" />
+          <span className="poster-kana">{word.hiragana}</span>
+          <span className="poster-kanji">{word.kanji}</span>
+        </div>
+      )}
+      <div className="bubble">
+        {highlightText(word.sceneCaption, word.sceneHighlightWords)}
+      </div>
+    </div>
+  );
+}
+
 function WordCard({
   word,
   known,
@@ -164,18 +190,7 @@ function WordCard({
         <div className="pill">{word.romaji}</div>
         <h2>{word.meaning}</h2>
       </div>
-      {word.sceneImage ? (
-        <div className="scene">
-          <img alt={word.meaning} className="scene-art" src={word.sceneImage} />
-          <div className="bubble">
-            {highlightText(word.sceneCaption, word.sceneHighlightWords)}
-          </div>
-        </div>
-      ) : (
-        <div className="panel">
-          <p>{highlightText(word.sceneCaption, word.sceneHighlightWords)}</p>
-        </div>
-      )}
+      <SceneBlock word={word} />
       <div className="panel">
         <span className="tip-label">MEMORY TIP</span>
         <h3 style={{ color: "var(--green-dark)" }}>{word.mnemonicHook}</h3>

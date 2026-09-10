@@ -186,6 +186,56 @@ h1 {
   background: #fff;
 }
 
+.scene-art.poster {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 220px;
+}
+
+.poster-blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.28;
+  background: #fff;
+}
+
+.poster-blob.a {
+  width: 160px;
+  height: 160px;
+  top: -30px;
+  left: -20px;
+}
+
+.poster-blob.b {
+  width: 120px;
+  height: 120px;
+  right: 18px;
+  bottom: 36px;
+}
+
+.poster-kana {
+  position: relative;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.poster-kanji {
+  position: relative;
+  z-index: 1;
+  font-family: serif;
+  font-size: 72px;
+  line-height: 1;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
+}
+
 .thumb {
   width: 56px;
   height: 56px;

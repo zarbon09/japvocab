@@ -1,6 +1,7 @@
 import pdfCards from "./pdfCards.json";
 import openJlpt from "./openjlpt-n5.json";
-import { words as starterWords, type ExampleSentence, type VocabWord } from "./words";
+import { toRomaji } from "wanakana";
+import { words as starterWords, type ExampleSentence, type RubyToken, type VocabWord } from "./words";
 
 export type { VocabWord };
 
@@ -21,7 +22,16 @@ type OpenJlptEntry = {
   examples?: { ja: string; en: string }[];
 };
 
-const TINTS = ["#0f4c81", "#c45c26", "#2f6b4f", "#6b3fa0", "#b42318", "#875400"];
+const TINTS = [
+  "#7ba7c9",
+  "#c45c26",
+  "#2f6b4f",
+  "#6b3fa0",
+  "#b42318",
+  "#875400",
+  "#0f4c81",
+  "#c47a2c",
+];
 
 const starterKeys = new Set(starterWords.map((w) => w.kanji));
 
@@ -42,7 +52,46 @@ function isRudeExample(ja: string, en: string): boolean {
   return /hell|stupid|idiot|damn|shut up/i.test(en) || /地獄/.test(ja);
 }
 
-function examplesFor(entry: OpenJlptEntry, meaning: string): ExampleSentence[] {
+function hasKanji(text: string): boolean {
+  return /[\u4e00-\u9fff]/.test(text);
+}
+
+function tokenizeExample(ja: string, word: string, reading: string): RubyToken[] {
+  const needles = [word, reading].filter((n) => n.length > 0);
+  needles.sort((a, b) => b.length - a.length);
+  let hit: { index: number; surface: string } | null = null;
+  for (const needle of needles) {
+    const index = ja.indexOf(needle);
+    if (index >= 0) {
+      hit = { index, surface: needle };
+      break;
+    }
+  }
+  if (!hit) {
+    return [{ text: ja, reading: null, highlight: false }];
+  }
+  const tokens: RubyToken[] = [];
+  if (hit.index > 0) {
+    tokens.push({ text: ja.slice(0, hit.index), reading: null, highlight: false });
+  }
+  tokens.push({
+    text: hit.surface,
+    reading: hasKanji(hit.surface) ? reading || null : null,
+    highlight: true,
+  });
+  const rest = ja.slice(hit.index + hit.surface.length);
+  if (rest) {
+    tokens.push({ text: rest, reading: null, highlight: false });
+  }
+  return tokens;
+}
+
+function examplesFor(
+  entry: OpenJlptEntry,
+  word: string,
+  reading: string,
+  meaning: string,
+): ExampleSentence[] {
   const highlight = meaning.split(/[,/]/)[0]?.trim() || meaning;
   const picked: ExampleSentence[] = [];
   for (const ex of entry.examples ?? []) {
@@ -50,16 +99,18 @@ function examplesFor(entry: OpenJlptEntry, meaning: string): ExampleSentence[] {
     const en = String(ex.en ?? "").trim();
     if (!ja || !en || isRudeExample(ja, en)) continue;
     picked.push({
-      tokens: [{ text: ja, reading: null, highlight: false }],
+      tokens: tokenizeExample(ja, word, reading),
       english: en,
       englishHighlight: highlight,
     });
-    if (picked.length >= 2) break;
+    if (picked.length >= 3) break;
   }
   if (picked.length === 0) {
-    const reading = entry.reading.trim() || null;
     picked.push({
-      tokens: [{ text: `${entry.word}。`, reading, highlight: true }],
+      tokens: [
+        { text: word, reading: hasKanji(word) ? reading || null : null, highlight: true },
+        { text: "です。", reading: null, highlight: false },
+      ],
       english: `This word means ${meaning}.`,
       englishHighlight: highlight,
     });
@@ -67,26 +118,61 @@ function examplesFor(entry: OpenJlptEntry, meaning: string): ExampleSentence[] {
   return picked;
 }
 
+function categoryFor(word: string, meaning: string): string {
+  const m = meaning.toLowerCase();
+  if (/time|day|week|year|now|morning|night|hour|clock|today|tomorrow|yesterday/.test(m)) {
+    return "Time";
+  }
+  if (/person|people|friend|family|i |you|he |she |name|teacher|student/.test(m)) {
+    return "People";
+  }
+  if (/school|study|learn|book|write|read|class/.test(m)) {
+    return "School";
+  }
+  if (/rain|water|fire|tree|mountain|sky|sun|nature|weather|wind/.test(m)) {
+    return "Nature";
+  }
+  if (word.endsWith("い") && word.length >= 2 && hasKanji(word)) {
+    return "Adjectives";
+  }
+  return "Daily life";
+}
+
+function highlightWords(meaning: string): string[] {
+  const first = meaning.split(/[,/]/)[0]?.trim() ?? meaning;
+  return first
+    .split(/\s+/)
+    .map((w) => w.replace(/[^a-zA-Z'-]/g, ""))
+    .filter((w) => w.length > 2)
+    .slice(0, 3);
+}
+
 function fromOpenJlpt(entry: OpenJlptEntry, index: number): VocabWord {
   const meanings = (entry.meanings ?? []).map((m) => String(m).trim()).filter(Boolean);
   const meaning = meanings[0] ?? "N5 vocabulary";
   const extra = meanings.slice(1, 3).join("; ");
-  const hiragana = (entry.reading || entry.word).trim();
+  const word = String(entry.word ?? "").trim();
+  const hiragana = (entry.reading || word).trim();
+  const romaji = toRomaji(hiragana);
+  const roma = romaji.trim() || hiragana;
+  const tint = TINTS[index % TINTS.length] ?? "#7ba7c9";
+  const hits = highlightWords(meaning);
+  const extraBit = extra ? ` Also: ${extra}.` : "";
   return {
-    id: `n5-${entry.word}-${entry.reading || "kana"}`,
-    kanji: entry.word,
+    id: `n5-${word}-${entry.reading || "kana"}`,
+    kanji: word,
     hiragana,
-    romaji: hiragana,
-    meaning,
-    category: "Full N5 list",
-    sceneCaption: extra ? `Also: ${extra}` : `N5 vocabulary: ${meaning}.`,
-    sceneHighlightWords: extra ? ["Also"] : [meaning],
-    mnemonicHook: "Full N5 list",
+    romaji: roma,
+    meaning: meaning.toUpperCase(),
+    category: categoryFor(word, meaning),
+    sceneCaption: `Look! This scene is about ${meaning}. Remember ${word} — it means ${meaning}.${extraBit}`,
+    sceneHighlightWords: hits,
+    mnemonicHook: `${roma.toUpperCase()} = ${meaning}`,
     mnemonicBody: extra
-      ? `Other meanings: ${extra}. From OpenJLPT (CC BY 4.0).`
-      : "Typed N5 vocabulary from OpenJLPT (CC BY 4.0). PDF picture cards are in a separate filter.",
-    sceneTint: TINTS[index % TINTS.length] ?? "#0f4c81",
-    examples: examplesFor(entry, meaning),
+      ? `Say ${roma} when you see ${word}. It means “${meaning}” (also ${extra}). Picture that meaning.`
+      : `Say ${roma} when you see ${word}. It means “${meaning}”. Picture that meaning in your head.`,
+    sceneTint: tint,
+    examples: examplesFor(entry, word, hiragana, meaning),
     sceneImage: "",
     deck: "n5",
   };

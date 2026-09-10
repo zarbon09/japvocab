@@ -2,7 +2,7 @@
 
 The current version is a **website** in `web/`. Run it with `cd web && npm install && npm run dev`. You do not need Android Studio.
 
-Learn includes the original starter flashcards, a **typed full N5 list** from OpenJLPT (CC BY 4.0), and **534 picture cards** from your N5 PDF. Because the PDF is made of images (not selectable text), each PDF word is shown as the original card picture so the drawing, English, and example sentences stay together. Practice quizzes use typed cards only.
+Learn includes the original starter flashcards, a **typed full N5 list** that uses the same flashcard layout (OpenJLPT, CC BY 4.0), and **534 picture cards** from your N5 PDF.
 
 Then use [PROGRESS.md](../PROGRESS.md) as a checklist. An older Android project still exists in `app/`; you can ignore it.
 
