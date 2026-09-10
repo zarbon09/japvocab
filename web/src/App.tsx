@@ -48,12 +48,13 @@ function LearnList({
   progress: LearnerProgress;
   onOpen: (id: string) => void;
 }) {
-  const [category, setCategory] = useState("From your PDF");
-  const chips = ["All", "Starter cards", "From your PDF"];
+  const [category, setCategory] = useState("Full N5 list");
+  const chips = ["All", "Starter cards", "Full N5 list", "From your PDF"];
   const visible = words.filter((w) => {
     if (category === "All") return true;
-    if (category === "Starter cards") return !w.fullCard;
-    if (category === "From your PDF") return Boolean(w.fullCard);
+    if (category === "Starter cards") return w.deck === "starter";
+    if (category === "Full N5 list") return w.deck === "n5";
+    if (category === "From your PDF") return w.deck === "pdf";
     return w.category === category;
   });
 
@@ -62,7 +63,8 @@ function LearnList({
       <div className="top-label">JLPT N5</div>
       <h1>Learn</h1>
       <p className="muted">
-        Open a card. PDF cards show the picture from your book. Starter cards have kanji, memory tips, and sentences.
+        {visible.length} cards in this filter. Full N5 list is typed vocabulary.
+        Starter cards have memory tips and drawings. PDF cards are pictures from your book.
       </p>
       <div className="chips">
         {chips.map((name) => (
@@ -83,7 +85,16 @@ function LearnList({
           onClick={() => onOpen(word.id)}
           type="button"
         >
-          <img alt="" className="thumb" src={word.sceneImage} />
+          {word.sceneImage ? (
+            <img alt="" className="thumb" src={word.sceneImage} />
+          ) : (
+            <div
+              className="thumb letter"
+              style={{ background: word.sceneTint }}
+            >
+              {word.kanji.slice(0, 2)}
+            </div>
+          )}
           <div className="kanji-box">{word.kanji}</div>
           <div>
             <div className="top-label">{word.hiragana}</div>
@@ -153,12 +164,18 @@ function WordCard({
         <div className="pill">{word.romaji}</div>
         <h2>{word.meaning}</h2>
       </div>
-      <div className="scene">
-        <img alt={word.meaning} className="scene-art" src={word.sceneImage} />
-        <div className="bubble">
-          {highlightText(word.sceneCaption, word.sceneHighlightWords)}
+      {word.sceneImage ? (
+        <div className="scene">
+          <img alt={word.meaning} className="scene-art" src={word.sceneImage} />
+          <div className="bubble">
+            {highlightText(word.sceneCaption, word.sceneHighlightWords)}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="panel">
+          <p>{highlightText(word.sceneCaption, word.sceneHighlightWords)}</p>
+        </div>
+      )}
       <div className="panel">
         <span className="tip-label">MEMORY TIP</span>
         <h3 style={{ color: "var(--green-dark)" }}>{word.mnemonicHook}</h3>
@@ -187,7 +204,7 @@ function PracticeHome({ onStart }: { onStart: (mode: PracticeMode) => void }) {
       <div className="top-label">JLPT N5</div>
       <h1>Practice</h1>
       <p className="muted">
-        8 quick questions. Tap an answer, then see if you were right.
+        8 quick questions from the typed N5 words (starter cards plus the full list). PDF picture cards are Learn-only.
       </p>
       {(
         [
@@ -321,7 +338,7 @@ function ProgressView({ progress }: { progress: LearnerProgress }) {
           ? "You have studied a few words. Try a Practice quiz next."
           : accuracy < 70
             ? "Review cards you missed, then take the mixed quiz again."
-            : "Nice work. Revisit Practice, then add more N5 words later.";
+            : "Nice work. Keep quizzing the full N5 list, and open PDF picture cards in Learn.";
 
   return (
     <section>

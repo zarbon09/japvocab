@@ -6,7 +6,8 @@ The plan is now a **website**, not Android Studio. Use this list.
 
 - [x] Learn / Practice / Progress in the browser
 - [x] 雨-style flashcards with furigana
-- [x] 22 N5 starter words
+- [x] 23 N5 starter words
+- [x] Full typed N5 list (OpenJLPT) + PDF picture cards
 - [x] Quizzes + progress saved in the browser
 
 ## You do next

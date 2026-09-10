@@ -194,6 +194,16 @@ h1 {
   flex-shrink: 0;
 }
 
+.thumb.letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .bubble {
   position: absolute;
   left: 12px;

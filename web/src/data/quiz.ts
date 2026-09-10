@@ -1,4 +1,4 @@
-import { words, type VocabWord } from "./words";
+import { quizWords, type VocabWord } from "./catalog";
 
 export type PracticeMode = "MEANING" | "READING" | "MIXED";
 
@@ -50,7 +50,7 @@ function readingQuestion(word: VocabWord, pool: VocabWord[]): QuizQuestion {
 }
 
 export function buildQuiz(mode: PracticeMode, count = 8): QuizQuestion[] {
-  const pool = [...words].sort(() => Math.random() - 0.5);
+  const pool = [...quizWords].sort(() => Math.random() - 0.5);
   return pool.slice(0, Math.min(count, pool.length)).map((word) => {
     if (mode === "MEANING") return meaningQuestion(word, pool);
     if (mode === "READING") return readingQuestion(word, pool);

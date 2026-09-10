@@ -4,8 +4,8 @@ A simple **website** for learning beginner Japanese vocabulary (JLPT N5). Use th
 
 Three tabs:
 
-- **Learn** — flashcards (kanji, readings, memory tip, example sentences)
-- **Practice** — meaning / reading / mixed quizzes
+- **Learn** — flashcards. Filters: starter cards, the full typed N5 list (OpenJLPT), and picture cards from your PDF
+- **Practice** — meaning / reading / mixed quizzes on typed words (not PDF pictures)
 - **Progress** — words opened, known words, quiz scores
 
 Progress is saved in your browser (`localStorage`). No login.
@@ -28,10 +28,18 @@ That is the whole setup. If you still have Android Studio open from the earlier 
 
 ## What to try first
 
-1. Learn → **雨** (rain)
+1. Learn → filter **Starter cards** → **雨** (rain). Or open **Full N5 list** for the rest of N5.
 2. Mark a word as known
 3. Practice → mixed quiz
 4. Check Progress
+
+## Word lists
+
+- **Starter cards** — a small illustrated set (雨, 青, …) with memory tips.
+- **Full N5 list** — typed JLPT N5 vocabulary from [OpenJLPT](https://github.com/evanclan/OpenJLPT) (CC BY 4.0). These cards use the word, reading, meaning, and example sentences. They do not reuse the PDF artwork.
+- **From your PDF** — picture cards extracted from your book. Study them as images.
+
+Practice quizzes use starter + full N5 typed cards only. PDF cards stay in Learn because they are pictures, not quiz text.
 
 ## Optional
 

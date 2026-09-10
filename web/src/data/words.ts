@@ -25,6 +25,8 @@ export type VocabWord = {
   examples: ExampleSentence[];
   sceneImage: string;
   fullCard?: boolean;
+  /** Which Learn filter this card belongs to. */
+  deck?: "starter" | "n5" | "pdf";
 };
 
 export const words: VocabWord[] = [
