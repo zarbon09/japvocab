@@ -2,6 +2,8 @@
 
 The current version is a **website** in `web/`. Run it with `cd web && npm install && npm run dev`. You do not need Android Studio.
 
+Learn includes **534 picture cards** taken from your N5 PDF, plus the original starter flashcards. Because the PDF is made of images (not selectable text), each PDF word is shown as the original card picture so the drawing, English, and example sentences stay together.
+
 Then use [PROGRESS.md](../PROGRESS.md) as a checklist. An older Android project still exists in `app/`; you can ignore it.
 
 ## What you are building

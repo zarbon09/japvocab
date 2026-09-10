@@ -7,7 +7,8 @@
 /captures
 .externalNativeBuild
 .cxx
-*.apk
+*.pdf
+n5.pdf
 *.ap_
 *.aab
 app/build

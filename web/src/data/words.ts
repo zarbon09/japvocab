@@ -24,6 +24,7 @@ export type VocabWord = {
   sceneTint: string;
   examples: ExampleSentence[];
   sceneImage: string;
+  fullCard?: boolean;
 };
 
 export const words: VocabWord[] = [

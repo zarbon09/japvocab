@@ -179,6 +179,13 @@ h1 {
   display: block;
 }
 
+.scene-art.full-card {
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  background: #fff;
+}
+
 .thumb {
   width: 56px;
   height: 56px;

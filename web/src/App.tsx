@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { categories, wordById, words, type VocabWord } from "./data/words";
+import { wordById, words, type VocabWord } from "./data/catalog";
 import {
   loadProgress,
   markViewed,
@@ -48,16 +48,21 @@ function LearnList({
   progress: LearnerProgress;
   onOpen: (id: string) => void;
 }) {
-  const [category, setCategory] = useState("All");
-  const chips = ["All", ...categories()];
-  const visible = words.filter((w) => category === "All" || w.category === category);
+  const [category, setCategory] = useState("From your PDF");
+  const chips = ["All", "Starter cards", "From your PDF"];
+  const visible = words.filter((w) => {
+    if (category === "All") return true;
+    if (category === "Starter cards") return !w.fullCard;
+    if (category === "From your PDF") return Boolean(w.fullCard);
+    return w.category === category;
+  });
 
   return (
     <section>
       <div className="top-label">JLPT N5</div>
       <h1>Learn</h1>
       <p className="muted">
-        Open a card. Study the kanji, the memory tip, then the example sentences.
+        Open a card. PDF cards show the picture from your book. Starter cards have kanji, memory tips, and sentences.
       </p>
       <div className="chips">
         {chips.map((name) => (
@@ -112,6 +117,28 @@ function WordCard({
   onBack: () => void;
   onToggle: () => void;
 }) {
+  if (word.fullCard) {
+    return (
+      <article>
+        <button className="back" onClick={onBack} type="button">
+          ← Back
+        </button>
+        <div className="top-label">JLPT N5 · from your PDF</div>
+        <h1 style={{ fontSize: 28 }}>
+          {word.kanji === "N5" ? "Picture card" : word.kanji}
+        </h1>
+        <p className="muted">{word.meaning}</p>
+        <div className="scene">
+          <img alt={word.meaning} className="scene-art full-card" src={word.sceneImage} />
+        </div>
+        <p className="muted">{word.mnemonicBody}</p>
+        <button className="primary" onClick={onToggle} type="button">
+          {known ? "Marked as known" : "Mark as known"}
+        </button>
+      </article>
+    );
+  }
+
   return (
     <article>
       <button className="back" onClick={onBack} type="button">
