@@ -1,0 +1,6 @@
+{
+  "name": "JLPT N5 Visual Flashcards",
+  "description": "Master JLPT N5 Japanese vocabulary with beautiful visual mnemonic flashcards, pronunciation, and contextual example sentences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

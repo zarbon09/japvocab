@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --color-outline-variant: #dcc0bf;
+  --color-surface-container-highest: #dce4e7;
+  --color-on-surface: #151d20;
+  --color-on-secondary-fixed: #0d2000;
+  --color-on-secondary-container: #3e7109;
+  --color-secondary-fixed: #b7f481;
+  --color-on-surface-variant: #564241;
+  --color-tertiary-fixed: #ffd9df;
+  --color-surface: #f3fbfe;
+  --color-surface-tint: #a03e40;
+  --color-on-primary-fixed: #410007;
+  --color-error: #ba1a1a;
+  --color-on-secondary: #ffffff;
+  --color-tertiary-fixed-dim: #fbb3c1;
+  --color-outline: #897271;
+  --color-tertiary-container: #c48390;
+  --color-primary-container: #e57373;
+  --color-on-background: #151d20;
+  --color-primary-fixed: #ffdad8;
+  --color-inverse-on-surface: #eaf2f6;
+  --color-on-error: #ffffff;
+  --color-on-tertiary-fixed-variant: #6b3743;
+  --color-background: #f3fbfe;
+  --color-surface-bright: #f3fbfe;
+  --color-inverse-primary: #ffb3b1;
+  --color-surface-variant: #dce4e7;
+  --color-tertiary: #864e5a;
+  --color-on-primary-fixed-variant: #80272b;
+  --color-on-tertiary: #ffffff;
+  --color-on-primary-container: #5e0c15;
+  --color-primary-fixed-dim: #ffb3b1;
+  --color-secondary-container: #b7f481;
+  --color-error-container: #ffdad6;
+  --color-surface-container-high: #e1e9ed;
+  --color-on-tertiary-fixed: #360c19;
+  --color-surface-dim: #d3dbdf;
+  --color-inverse-surface: #2a3235;
+  --color-surface-container: #e7eff3;
+  --color-primary: #a03e40;
+  --color-surface-container-low: #edf5f9;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-primary: #ffffff;
+  --color-on-secondary-fixed-variant: #285000;
+  --color-secondary: #386b01;
+  --color-secondary-fixed-dim: #9cd769;
+  --color-on-tertiary-container: #4d1f2a;
+  --color-on-error-container: #93000a;
+
+  --font-headline-sm: "Plus Jakarta Sans";
+  --font-kanji-hero-mobile: "Noto Sans";
+  --font-body-md: "Plus Jakarta Sans";
+  --font-display-lg: "Plus Jakarta Sans";
+  --font-label-lg: "Plus Jakarta Sans";
+  --font-headline-md: "Plus Jakarta Sans";
+  --font-label-sm: "Plus Jakarta Sans";
+  --font-body-lg: "Plus Jakarta Sans";
+  --font-display-lg-mobile: "Plus Jakarta Sans";
+  --font-kanji-hero: "Noto Sans";
+  --font-label-md: "Plus Jakarta Sans";
+  --font-headline-lg: "Plus Jakarta Sans";
+  --font-furigana: "Noto Sans";
+
+  --spacing-space-lg: 1.5rem;
+  --spacing-gutter: 1rem;
+  --spacing-gutter-mobile: 0.75rem;
+  --spacing-space-md: 1rem;
+  --spacing-margin-mobile: 1rem;
+  --spacing-margin: 1.5rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-xl: 2rem;
+  --spacing-space-xs: 0.25rem;
+}
+
+@layer base {
+  html,
+  body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    overscroll-behavior: none;
+    min-height: max(884px, 100dvh);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Base typography utilities missing from v4 default theme map if not explicitly set */
+.text-headline-sm { font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: 0em; }
+.text-kanji-hero-mobile { font-size: 48px; line-height: 56px; font-weight: 600; letter-spacing: 0.02em; }
+.text-body-md { font-size: 14px; line-height: 20px; font-weight: 400; letter-spacing: 0.01em; }
+.text-display-lg { font-size: 40px; line-height: 48px; font-weight: 700; letter-spacing: -0.02em; }
+.text-label-lg { font-size: 14px; line-height: 18px; font-weight: 600; letter-spacing: 0.02em; }
+.text-headline-md { font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: 0em; }
+.text-label-sm { font-size: 10px; line-height: 14px; font-weight: 700; letter-spacing: 0.05em; }
+.text-body-lg { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: 0.01em; }
+.text-display-lg-mobile { font-size: 32px; line-height: 40px; font-weight: 700; letter-spacing: -0.02em; }
+.text-kanji-hero { font-size: 64px; line-height: 72px; font-weight: 600; letter-spacing: 0.02em; }
+.text-label-md { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.03em; }
+.text-headline-lg { font-size: 28px; line-height: 36px; font-weight: 700; letter-spacing: -0.01em; }
+.text-furigana { font-size: 11px; line-height: 14px; font-weight: 600; letter-spacing: 0.04em; }
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
